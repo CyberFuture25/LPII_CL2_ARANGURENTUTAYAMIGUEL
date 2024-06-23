@@ -2,33 +2,34 @@ package Dao;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
+
 import Interfaces.IUsuario;
 import model.TblUsuariocl2;
 
 public class ClassUsuarioImp implements IUsuario{
 
-	@Override
-	public void RegistrarUsuario(TblUsuariocl2 usuario) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void ActualizarUsuario(TblUsuariocl2 usuario) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void EliminarUsuario(TblUsuariocl2 usuario) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public List<TblUsuariocl2> ListaUsuario() {
-		// TODO Auto-generated method stub
-		return null;
+	public TblUsuariocl2 ValidarUsuario(String usuario, String password) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("LPII_CL2_ARANGURENTUTAYAMIGUEL");
+		EntityManager em = emf.createEntityManager();
+		try{
+			TypedQuery<TblUsuariocl2> query = em.createQuery(
+					"SELECT u FROM TblUsuariocl2 u WHERE u.usuariocl2 = :usuario AND u.passwordcl2 = :password",TblUsuariocl2.class);
+			query.setParameter("usuario", usuario);
+			query.setParameter("password", password);
+			
+			return query.getSingleResult();
+		}//fin 
+		catch(NoResultException e){
+			return null;
+		}
+		finally{
+			em.close();
+		}
 	}
 
 }

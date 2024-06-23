@@ -15,27 +15,23 @@
 </tr>
 
 <tr>
-<td>Precio</td>
-<td><input type="text" name="precio"></td>
+<td>PrecioVenta</td>
+<td><input type="text" name="precioventa"></td>
 </tr>
 
 <tr>
-<td>PrecioVen</td>
-<td><input type="text" name="PrecioVenta"></td>
+<td>PrecioCompra</td>
+<td><input type="text" name="preciocompra"></td>
 </tr>
 
 <tr>
 <td>Estado</td>
-<td><select name="estado" >
-            <option value="1">Vigente</option>
-            <option value="2">Caducado</option>
-        </select>
-</td>
+<td><input type="text" name="estado"></td>
 </tr>
 
 <tr>
 <td>Descrip</td>
-<td><input type="text" name="Descrip" size="30"></td>
+<td><input type="text" name="Descrip"></td>
 </tr>
 <tr>
 <td colspan="2" align="center">
